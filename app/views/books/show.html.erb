@@ -6,7 +6,8 @@
   <div class="col-md-8">
     <h2><%= @book.Title %></h2>
     <h3><%= @book.Author %></h3>
-
+    <h2>Average Rating</h2>
+    <div class="average-review-rating" data-score=<%= @average_review %>></div>
     <p><%= @book.Description %></p>
 </div>
 </div>
@@ -31,3 +32,14 @@
   <%= link_to "Delete", book_path(@book), method: :DELETE, data: { confirm: "Are you sure?"} %>
   <% end %>
 <% end %>
+
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assests/'
+  });
+ </script>
